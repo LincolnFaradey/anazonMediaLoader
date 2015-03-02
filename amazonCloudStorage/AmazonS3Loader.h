@@ -15,5 +15,7 @@
 
 - (void)uploadPhoto:(UIImage *)image withUploadProgress: (void(^)(int64_t totalBytesSent, int64_t totalBytesExpectedToSend))tracker;
 
+- (void)downloadList:(void(^)(NSArray *))completition;
+- (void)downloadPhoto:(NSString *)imageName progressBlock:(void(^)(int64_t totalBytesSent, int64_t totalBytesExpectedToSend))progress block:(void(^)(UIImage *image))completition;
 
 @end

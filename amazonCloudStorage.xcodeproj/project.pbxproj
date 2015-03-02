@@ -15,6 +15,8 @@
 		7FBC9B031AA24AC500B5D35B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FBC9B011AA24AC500B5D35B /* LaunchScreen.xib */; };
 		7FBC9B0F1AA24AC500B5D35B /* amazonCloudStorageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC9B0E1AA24AC500B5D35B /* amazonCloudStorageTests.m */; };
 		7FBC9B1A1AA2575F00B5D35B /* AmazonS3Loader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC9B191AA2575F00B5D35B /* AmazonS3Loader.m */; };
+		7FE8CB7C1AA365D400F550E3 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8CB7A1AA365D400F550E3 /* TableViewController.m */; };
+		7FE8CB801AA3825A00F550E3 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8CB7F1AA3825A00F550E3 /* DetailViewController.m */; };
 		A299F34227D31318F3F2CD87 /* libPods-amazonCloudStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 581E4B5806E327470A1AC31C /* libPods-amazonCloudStorage.a */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +49,10 @@
 		7FBC9B181AA2575F00B5D35B /* AmazonS3Loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmazonS3Loader.h; sourceTree = "<group>"; };
 		7FBC9B191AA2575F00B5D35B /* AmazonS3Loader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmazonS3Loader.m; sourceTree = "<group>"; };
 		7FBC9B1F1AA25AB100B5D35B /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		7FE8CB791AA365D400F550E3 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		7FE8CB7A1AA365D400F550E3 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		7FE8CB7E1AA3825A00F550E3 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		7FE8CB7F1AA3825A00F550E3 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		D0170CD05276019BF923A3CA /* Pods-amazonCloudStorage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-amazonCloudStorage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-amazonCloudStorage/Pods-amazonCloudStorage.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +121,10 @@
 				7FBC9AFA1AA24AC500B5D35B /* ViewController.m */,
 				7FBC9B1B1AA2576600B5D35B /* AmazonAPI */,
 				7FBC9AFC1AA24AC500B5D35B /* Main.storyboard */,
+				7FE8CB7E1AA3825A00F550E3 /* DetailViewController.h */,
+				7FE8CB7F1AA3825A00F550E3 /* DetailViewController.m */,
+				7FE8CB791AA365D400F550E3 /* TableViewController.h */,
+				7FE8CB7A1AA365D400F550E3 /* TableViewController.m */,
 				7FBC9AFF1AA24AC500B5D35B /* Images.xcassets */,
 				7FBC9B011AA24AC500B5D35B /* LaunchScreen.xib */,
 				7FBC9AF21AA24AC500B5D35B /* Supporting Files */,
@@ -296,7 +306,9 @@
 				7FBC9AFB1AA24AC500B5D35B /* ViewController.m in Sources */,
 				7FBC9AF81AA24AC500B5D35B /* AppDelegate.m in Sources */,
 				7FBC9B1A1AA2575F00B5D35B /* AmazonS3Loader.m in Sources */,
+				7FE8CB7C1AA365D400F550E3 /* TableViewController.m in Sources */,
 				7FBC9AF51AA24AC500B5D35B /* main.m in Sources */,
+				7FE8CB801AA3825A00F550E3 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

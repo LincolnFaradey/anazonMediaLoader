@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "AmazonS3Loader.h"
+#import "TableViewController.h"
 
 @interface ViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
@@ -28,7 +29,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)showImagePicker:(UIButton *)sender {
@@ -47,7 +47,6 @@
         NSLog(@"byte %lld", totalBytesSent * 100 / totalBytesExpectedToSend);
     }];
     
-    
     [self dismissViewControllerAnimated:_imagePickerController completion:nil];
 }
 
@@ -65,6 +64,11 @@
     }else {
         self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
+}
+
+- (IBAction)photosButtonPressed:(UIButton *)sender {
+    TableViewController *tvc = [[TableViewController alloc] init];
+    [self presentViewController:tvc animated:YES completion:nil];
 }
 
 @end

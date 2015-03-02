@@ -8,10 +8,13 @@
 
 #import <AWSiOSSDKv2/AWSCore.h>
 #import <AWSiOSSDKv2/S3.h>
+#import <S3.h>
 #import "Constants.h"
 #import "AmazonS3Loader.h"
 
-@interface AmazonS3Loader ()
+@interface AmazonS3Loader () {
+    NSMutableArray *keys;
+}
 
 @property (nonatomic, strong) AWSCognitoCredentialsProvider *credentialsProvider;
 @property (nonatomic, strong) AWSServiceConfiguration *serviceConfiguration;
@@ -51,7 +54,6 @@
     NSData *data = UIImagePNGRepresentation(image);
     NSNumber *length = [NSNumber numberWithUnsignedLongLong:[data length]];
     
-    AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
     AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
 
     uploadRequest.bucket = BUCKET;
@@ -65,7 +67,7 @@
     };
     
     
-    [[transferManager upload:uploadRequest] continueWithBlock:^id(BFTask *task) {
+    [[[AWSS3TransferManager defaultS3TransferManager] upload:uploadRequest] continueWithBlock:^id(BFTask *task) {
         
         if (task.error) {
             NSLog(@"Err - %@", task.error);
@@ -74,6 +76,47 @@
             NSLog(@"Task is cancelled");
         }
         
+        return nil;
+    }];
+}
+
+- (void)downloadPhoto:(NSString *)imageName progressBlock:(void(^)(int64_t totalBytesSent, int64_t totalBytesExpectedToSend))progress block:(void(^)(UIImage *image))completition
+{
+    AWSS3TransferManagerDownloadRequest *request = [AWSS3TransferManagerDownloadRequest new];
+    request.bucket = BUCKET;
+    request.key = imageName;
+    request.downloadProgress =  ^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        progress(totalBytesSent, totalBytesExpectedToSend);
+    };
+    NSString* path = [NSTemporaryDirectory() stringByAppendingPathComponent:imageName];
+    NSURL *url = [NSURL URLWithString:path];
+    
+    request.downloadingFileURL = url;
+    [[[AWSS3TransferManager defaultS3TransferManager] download:request] continueWithSuccessBlock:^id(BFTask *task) {
+        if (!task.error) {
+            UIImage *image =  [UIImage imageWithContentsOfFile:path];
+            completition(image);
+        }
+        
+        return nil;
+    }];
+}
+
+- (void)downloadList:(void(^)(NSArray *))completition
+{
+    AWSS3ListObjectsRequest *listObjects = [AWSS3ListObjectsRequest new];
+    listObjects.delimiter = @"/";
+    listObjects.bucket = BUCKET;
+    keys = [NSMutableArray array];
+    AWSS3 *s3 = [[AWSS3 alloc] initWithConfiguration:serviceConfiguration];
+    [[s3 listObjects:listObjects] continueWithSuccessBlock:^id(BFTask *task) {
+        AWSS3ListObjectsOutput *output = [AWSS3ListObjectsOutput new];
+        output = task.result;
+        
+        for (AWSS3Object *s3object in output.contents) {
+            [keys addObject:s3object.key];
+        }
+        completition(keys);
         return nil;
     }];
 }
