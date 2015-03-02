@@ -120,13 +120,8 @@
 				7FBC9AF61AA24AC500B5D35B /* AppDelegate.h */,
 				7FBC9AF71AA24AC500B5D35B /* AppDelegate.m */,
 				7FE8CB831AA5106F00F550E3 /* Storyboards */,
-				7FBC9AF91AA24AC500B5D35B /* ViewController.h */,
-				7FBC9AFA1AA24AC500B5D35B /* ViewController.m */,
+				7FE8CB841AA517CB00F550E3 /* ViewControllers */,
 				7FBC9B1B1AA2576600B5D35B /* AmazonAPI */,
-				7FE8CB7E1AA3825A00F550E3 /* DetailViewController.h */,
-				7FE8CB7F1AA3825A00F550E3 /* DetailViewController.m */,
-				7FE8CB791AA365D400F550E3 /* TableViewController.h */,
-				7FE8CB7A1AA365D400F550E3 /* TableViewController.m */,
 				7FBC9AFF1AA24AC500B5D35B /* Images.xcassets */,
 				7FBC9B011AA24AC500B5D35B /* LaunchScreen.xib */,
 				7FBC9AF21AA24AC500B5D35B /* Supporting Files */,
@@ -177,6 +172,19 @@
 				7FBC9AFC1AA24AC500B5D35B /* Main.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		7FE8CB841AA517CB00F550E3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7FBC9AF91AA24AC500B5D35B /* ViewController.h */,
+				7FBC9AFA1AA24AC500B5D35B /* ViewController.m */,
+				7FE8CB7E1AA3825A00F550E3 /* DetailViewController.h */,
+				7FE8CB7F1AA3825A00F550E3 /* DetailViewController.m */,
+				7FE8CB791AA365D400F550E3 /* TableViewController.h */,
+				7FE8CB7A1AA365D400F550E3 /* TableViewController.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

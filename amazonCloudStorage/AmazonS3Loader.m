@@ -6,9 +6,7 @@
 //  Copyright (c) 2015 Andrei Nechaev. All rights reserved.
 //
 
-#import <AWSiOSSDKv2/AWSCore.h>
 #import <AWSiOSSDKv2/S3.h>
-#import <S3.h>
 #import "Constants.h"
 #import "AmazonS3Loader.h"
 
@@ -91,10 +89,16 @@
     NSString* path = [NSTemporaryDirectory() stringByAppendingPathComponent:imageName];
     NSURL *url = [NSURL URLWithString:path];
     
+    __block UIImage *image = [UIImage imageWithContentsOfFile:path];
+    if (image) {
+        completition(image);
+        return;
+    }
+    
     request.downloadingFileURL = url;
     [[[AWSS3TransferManager defaultS3TransferManager] download:request] continueWithSuccessBlock:^id(BFTask *task) {
         if (!task.error) {
-            UIImage *image =  [UIImage imageWithContentsOfFile:path];
+            image =  [UIImage imageWithContentsOfFile:path];
             completition(image);
         }
         

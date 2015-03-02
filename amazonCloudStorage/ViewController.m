@@ -40,17 +40,6 @@
     [super didReceiveMemoryWarning];
 }
 
-- (IBAction)showImagePicker:(UIButton *)sender {
-    [self sourceType];
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        self.popController = [[UIPopoverController alloc] initWithContentViewController:_imagePickerController];
-        [self.popController presentPopoverFromRect:CGRectMake(0, 0, 300, 300) inView:self.snapButton permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
-    }else {
-        [self presentViewController:self.imagePickerController animated:YES completion:nil];
-    }
-}
-
-
 #pragma mark - UIImagePickerControllerDelegate methods
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -82,6 +71,33 @@
     }
 }
 
+#pragma mark - IBActions
+
+- (IBAction)showImagePicker:(UIButton *)sender {
+    [self sourceType];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        self.popController = [[UIPopoverController alloc] initWithContentViewController:_imagePickerController];
+        [self.popController presentPopoverFromRect:self.view.frame inView:self.snapButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }else {
+        [self presentViewController:self.imagePickerController animated:YES completion:nil];
+    }
+}
+
+- (IBAction)showList:(UIButton *)sender {
+    UIStoryboard *iPadSB = [UIStoryboard storyboardWithName:@"Universal" bundle:nil];
+    UINavigationController *navController = [iPadSB instantiateViewControllerWithIdentifier:@"navigationController"];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        UIPopoverController *popoverVC = [[UIPopoverController alloc] initWithContentViewController:navController];
+        [popoverVC presentPopoverFromRect:sender.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }else{
+        [self presentViewController:navController animated:YES completion:nil];
+    }
+}
+
+- (IBAction)unwindToSegue:(UIStoryboardSegue *)sender
+{
+    NSLog(@"%s", __FUNCTION__);
+}
 
 #pragma mark - Helper methods
 - (void)sourceType
@@ -93,15 +109,6 @@
     }
 }
 
-- (IBAction)photosButtonPressed:(UIButton *)sender {
-    TableViewController *tvc = [[TableViewController alloc] init];
-    [self presentViewController:tvc animated:YES completion:nil];
-}
-
-- (IBAction)unwindToSegue:(UIStoryboardSegue *)sender
-{
-    NSLog(@"%s", __FUNCTION__);
-}
 
 - (UIColor *)colorfulPercents:(int)p
 {
@@ -113,16 +120,4 @@
         return [UIColor greenColor];
     }
 }
-- (IBAction)showList:(UIButton *)sender {
-    UIStoryboard *iPadSB = [UIStoryboard storyboardWithName:@"Universal" bundle:nil];
-    UINavigationController *navController = [iPadSB instantiateViewControllerWithIdentifier:@"navigationController"];
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        UIPopoverController *popoverVC = [[UIPopoverController alloc] initWithContentViewController:navController];
-        [popoverVC presentPopoverFromRect:sender.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    }else{
-        [self presentViewController:navController animated:YES completion:nil];
-    }
-    
-}
-
 @end
