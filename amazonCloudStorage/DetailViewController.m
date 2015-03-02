@@ -19,14 +19,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"%s", __FUNCTION__);
-    // Do any additional setup after loading the view.
+//    self.imageView.layer.affineTransform = CGAffineTransformMakeRotation(M_PI / 2);
+    [self downloadPhoto];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
 
+- (void)downloadPhoto
+{
     [[AmazonS3Loader sharedManager] downloadPhoto:_imageName progressBlock:^(int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.navigationItem.title = [NSString stringWithFormat:@"%lld", totalBytesSent * 100 / totalBytesExpectedToSend ];
@@ -35,9 +34,12 @@
         
     } block:^(UIImage *image) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.imageView = [[UIImageView alloc] initWithImage:image];
+            self.imageView = [[UIImageView alloc] init];
+            self.imageView.image = image;
+            self.imageView.layer.affineTransform = CGAffineTransformMakeRotation(M_PI / 2);
             self.imageView.frame = self.view.bounds;
             self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+            
             [self.view addSubview:self.imageView];
         });
     }];

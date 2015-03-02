@@ -18,15 +18,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    AmazonS3Loader *am = [AmazonS3Loader sharedManager];
-    NSMutableArray *tmpArray = [NSMutableArray new];
+    
     self.navigationItem.title = @"List";
-    [am downloadList:^(NSArray *array) {
+    
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSMutableArray *tmpArray = [NSMutableArray new];
+    [[AmazonS3Loader sharedManager] downloadList:^(NSArray *array) {
         for (NSString *str in array) {
             [tmpArray addObject:str];
         }
         self.keys = [NSArray arrayWithArray:tmpArray];
-        NSLog(@"%s size %lu", __FUNCTION__, [self.keys count]);
+
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
         });
@@ -56,7 +63,8 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"myCell"];
     }
-    cell.textLabel.text = self.keys[indexPath.row];
+    NSInteger index = [_keys count] - indexPath.row - 1;
+    cell.textLabel.text = self.keys[index];
     
     return cell;
 }

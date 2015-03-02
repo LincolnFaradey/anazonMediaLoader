@@ -17,6 +17,7 @@
 		7FBC9B1A1AA2575F00B5D35B /* AmazonS3Loader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC9B191AA2575F00B5D35B /* AmazonS3Loader.m */; };
 		7FE8CB7C1AA365D400F550E3 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8CB7A1AA365D400F550E3 /* TableViewController.m */; };
 		7FE8CB801AA3825A00F550E3 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8CB7F1AA3825A00F550E3 /* DetailViewController.m */; };
+		7FE8CB821AA507BC00F550E3 /* Universal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8CB811AA507BC00F550E3 /* Universal.storyboard */; };
 		A299F34227D31318F3F2CD87 /* libPods-amazonCloudStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 581E4B5806E327470A1AC31C /* libPods-amazonCloudStorage.a */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		7FE8CB7A1AA365D400F550E3 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		7FE8CB7E1AA3825A00F550E3 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		7FE8CB7F1AA3825A00F550E3 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		7FE8CB811AA507BC00F550E3 /* Universal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Universal.storyboard; sourceTree = "<group>"; };
 		D0170CD05276019BF923A3CA /* Pods-amazonCloudStorage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-amazonCloudStorage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-amazonCloudStorage/Pods-amazonCloudStorage.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,10 +119,10 @@
 			children = (
 				7FBC9AF61AA24AC500B5D35B /* AppDelegate.h */,
 				7FBC9AF71AA24AC500B5D35B /* AppDelegate.m */,
+				7FE8CB831AA5106F00F550E3 /* Storyboards */,
 				7FBC9AF91AA24AC500B5D35B /* ViewController.h */,
 				7FBC9AFA1AA24AC500B5D35B /* ViewController.m */,
 				7FBC9B1B1AA2576600B5D35B /* AmazonAPI */,
-				7FBC9AFC1AA24AC500B5D35B /* Main.storyboard */,
 				7FE8CB7E1AA3825A00F550E3 /* DetailViewController.h */,
 				7FE8CB7F1AA3825A00F550E3 /* DetailViewController.m */,
 				7FE8CB791AA365D400F550E3 /* TableViewController.h */,
@@ -166,6 +168,15 @@
 				7FBC9B1F1AA25AB100B5D35B /* Constants.h */,
 			);
 			name = AmazonAPI;
+			sourceTree = "<group>";
+		};
+		7FE8CB831AA5106F00F550E3 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				7FE8CB811AA507BC00F550E3 /* Universal.storyboard */,
+				7FBC9AFC1AA24AC500B5D35B /* Main.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +264,7 @@
 				7FBC9AFE1AA24AC500B5D35B /* Main.storyboard in Resources */,
 				7FBC9B031AA24AC500B5D35B /* LaunchScreen.xib in Resources */,
 				7FBC9B001AA24AC500B5D35B /* Images.xcassets in Resources */,
+				7FE8CB821AA507BC00F550E3 /* Universal.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +400,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -422,6 +435,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -434,6 +448,7 @@
 				INFOPLIST_FILE = amazonCloudStorage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -445,6 +460,7 @@
 				INFOPLIST_FILE = amazonCloudStorage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

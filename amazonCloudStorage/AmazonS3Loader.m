@@ -131,7 +131,12 @@
 
 - (NSString *)fileKey
 {
-    return [NSString stringWithFormat:@"%f.png",[NSDate timeIntervalSinceReferenceDate]];
+    NSDate *today = [NSDate date];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MM-dd-yyyy-hh:mm:ssa"];
+    NSString *dateString = [dateFormat stringFromDate:today];
+    NSLog(@"time %@", dateString);
+    return [NSString stringWithFormat:@"%@.png", dateString];
 }
 
 @end
